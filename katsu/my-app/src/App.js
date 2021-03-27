@@ -36,7 +36,7 @@ function App() {
     zoom: 8
   });  
 
-  const [showPopup, togglePopup] = useState(false);
+  const [showPopup, togglePopup] = useState(null);
 
   return (
     <ReactMapGL
