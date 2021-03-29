@@ -15,7 +15,7 @@ function CityInfo(props) {
           Wikipedia
         </a>
       </div>
-      <img width={300} src={info.image}/>
+      <img width={240} src={info.image} alt=""/>
     </div>
   );
 }
