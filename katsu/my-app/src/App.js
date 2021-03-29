@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
-import ReactMapGL, {AttributionControl, FullscreenControl, GeolocateControl,Marker, Popup, NavigationControl} from 'react-map-gl';
+import ReactMapGL, {
+  AttributionControl, 
+  FullscreenControl, 
+  GeolocateControl,
+  ScaleControl, 
+  Popup,
+  NavigationControl} from 'react-map-gl';
+import Pins from './pins.js';
+import CityInfo from './city-info.js';
+import CITIES from './data/cities.json';
 
 const TOKEN = 'pk.eyJ1Ijoia2F0c3UxIiwiYSI6ImNrbWxudzNsaTFjb2gyb3Frc2puNWp2YWsifQ.huIA73MzdpMzWEKOUFBFcQ'
 
@@ -24,6 +33,13 @@ const navControlStyle= {
   top: 50
 };
 
+const scaleControlStyle = {
+  bottom: 36,
+  left: 0,
+  padding: '10px'
+};
+
+
 function App() {
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -33,10 +49,12 @@ function App() {
     // longitude: -122.45,
     // latitude: 37.78,    
     //zoom: 8
-    zoom: 8
+    zoom: 8,
+    bearing: 0,
+    pitch: 0
   });  
 
-  const [showPopup, togglePopup] = useState(null);
+  const [popupInfo, setPopupInfo] = useState(null);
 
   return (
     <ReactMapGL
@@ -57,20 +75,21 @@ function App() {
         auto={false}
       />
       <NavigationControl style={navControlStyle} />
-      <Marker latitude={35.6895} longitude={139.69171} offsetLeft={-20} offsetTop={-10}>
-        <div>You are here</div>
-      </Marker>
-      {showPopup && <Popup
-          latitude={35.6895}
-          longitude={139.69171}
-          closeButton={true}
-          closeOnClick={false}
-          onClose={() => togglePopup(false)}
-          anchor="top"
-          tipSize={30}
-           >
-          <div>You are here</div>
-        </Popup>}
+      <ScaleControl style={scaleControlStyle} />
+      <Pins data={CITIES} onClick={setPopupInfo} />
+      {popupInfo && (
+          <Popup
+            tipSize={5}
+            anchor="top"
+            longitude={popupInfo.longitude}
+            latitude={popupInfo.latitude}
+            closeOnClick={false}
+            onClose={setPopupInfo}
+          >
+            <CityInfo info={popupInfo} />
+          </Popup>
+        )}
+
       </ReactMapGL>
     );
   }
