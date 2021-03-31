@@ -26,8 +26,10 @@ const attributionStyle = {
 };
 
 const fullscreenControlStyle = {
-  right: 10,
+  position: 'absolute',
+  right: 0,
   bottom: 50,
+  padding: "10px",
 };
 
 const geolocateControlStyle = {
@@ -134,7 +136,7 @@ function App() {
       <div className="mapboxgl-ctrl-group mapboxgl-ctrl">
         <button
           className="mapbox-gl-draw_ctrl-draw-btn mapbox-gl-draw_line"
-          title="Polygon tool (p)"
+          title="Line tool (l)"
           onClick={() => setMode(new DrawLineStringMode())}
         />
         <button
