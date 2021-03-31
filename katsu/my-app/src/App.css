@@ -52,3 +52,16 @@
   text-transform: uppercase;
   outline: none;
 }
+
+.button {
+  position: absolute;
+  margin: 20px;
+}
+
+#pause::after {
+  content: 'Pause';
+}
+
+#pause.pause::after {
+  content: 'Play';
+}
