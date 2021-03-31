@@ -59,9 +59,9 @@
 }
 
 #pause::after {
-  content: 'Pause';
+  content: "Pause";
 }
 
 #pause.pause::after {
-  content: 'Play';
+  content: "Play";
 }
