@@ -104,7 +104,7 @@ function App() {
     paint: {
       "line-color": "#ed6498",
       "line-width": 5,
-      "line-opacity": 1,
+      "line-opacity": 0.8,
     },
   };
 
