@@ -5,20 +5,17 @@ function ShipInfo(props) {
   const displayShipName = `${info.shipname}`;
   const displayOwner = `${info.Owner}`;
   const displayOperator = `${info.Operator}`;
-  
+
   return (
     <div>
+      <div>Ship Name: {displayShipName}</div>
+      <div>Ship Oner: {displayOwner}</div>
+      <div>Ship Operator: {displayOperator}</div>
       <div>
-        Ship Name: {displayShipName}
-      </div>
-      <div>
-        Ship Oner: {displayOwner}
-      </div>
-      <div>
-        Ship Operator: {displayOperator}     
-      </div>
-      <div>
-        <a target="_new" href={`https://en.wikipedia.org/wiki/${info.shipname}`}>
+        <a
+          target="_new"
+          href={`https://en.wikipedia.org/wiki/${info.shipname}`}
+        >
           Wikipedia
         </a>
       </div>
